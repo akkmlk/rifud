@@ -2,8 +2,118 @@
 
 
 {% block content %}
-<div class="flex items-start sm:items-center p-4 mb-4 text-sm text-fg-brand-strong rounded-base bg-brand-softer" role="alert">
-    <svg class="w-4 h-4 me-2 shrink-0 mt-0.5 sm:mt-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-    <p><span class="font-medium me-1">Info alert!</span> Halaman User (Main Page).</p>
+
+<div class="
+    h-150
+    bg-cover bg-center
+    animate-bg-carousel
+    relative">
+    <div class="absolute  left-15 md:left-30 inset-0 z-20 flex items-center ">
+        <div class="max-w-xl px-4 md:px-16 text-white text-center md:text-left">
+        
+        <!-- Judul -->
+        <h1 class="text-7xl md:text-8xl font-extrabold leading-tight">
+        Lorem<br>
+        Ipsum Sit
+        </h1>
+
+        <!-- Deskripsi -->
+        <p class="mt-4 text-sm md:text-base text-white/90">
+        Lorem Ipsum Dolor Sit Amet,<br>
+        consectetur adipiscing
+        </p>
+
+    <!-- Button -->
+        <button
+        class="mt-6 inline-flex items-center rounded-full
+                bg-white text-primary
+                px-6 py-2 text-sm font-semibold
+                hover:bg-white/90 transition">
+            Check Out
+        </button>
+
+        </div>
+    </div>
 </div>
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+        <!-- IMAGE -->
+        <div class="relative">
+            <img
+            src="/static/images/bg-4.jpg"
+            alt="About us image"
+            class="rounded-2xl shadow-lg w-full object-cover"
+            >
+            <!-- Accent box -->
+            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent rounded-2xl -z-10"></div>
+        </div>
+
+        <!-- TEXT -->
+        <div>
+            <span class="text-secondary text-2xl font-bold uppercase tracking-wide">
+            About Us
+            </span>
+
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold text-primary leading-tight">
+            We Serve Authentic<br>
+            Traditional Food
+            </h2>
+
+            <p class="mt-4 text-gray-700 leading-relaxed">
+            We are passionate about delivering authentic flavors using fresh,
+            high-quality ingredients. Every dish is prepared with care to give
+            you the best culinary experience.
+            </p>
+
+            <p class="mt-3 text-gray-700 leading-relaxed">
+            From traditional recipes to modern presentations, our goal is to
+            bring people together through delicious food and warm hospitality.
+            </p>
+
+            <!-- FEATURES -->
+            <div class="mt-6 grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                ✓
+                </div>
+                <span class="text-sm font-medium">Fresh Ingredients</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                ✓
+                </div>
+                <span class="text-sm font-medium">Best Quality</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                ✓
+                </div>
+                <span class="text-sm font-medium">Traditional Recipe</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                ✓
+                </div>
+                <span class="text-sm font-medium">Friendly Service</span>
+            </div>
+            </div>
+
+            <!-- BUTTON -->
+            <a href="#"
+            class="inline-block mt-8 rounded-full bg-primary px-8 py-3 text-white font-semibold hover:bg-primary/90 transition">
+            Learn More
+            </a>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}
