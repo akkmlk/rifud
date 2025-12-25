@@ -13,3 +13,15 @@ def register():
 @pages.route('/login')
 def login():
     return render_template('auth/login.html')
+
+@pages.route('/daftar')
+def daftar():
+    return render_template('resto/index.html')
+
+@pages.route('/tambah')
+def tambah():
+    return render_template('resto/add.html')
+
+@pages.route('/edit')
+def edit():
+    return render_template('resto/edit.html')
