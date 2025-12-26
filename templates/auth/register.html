@@ -1,5 +1,11 @@
 {% extends 'layout/base_auth.html' %}
 
 {% block content %}
-<p class="text-pink-600">Halaman Daftar</p>
+{% from "components/login_card.html" import loginCard %}
+{{ loginCard(
+        "Login",
+        "Daftar",
+        "/login"
+    ) }}
+
 {% endblock %}

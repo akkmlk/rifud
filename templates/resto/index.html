@@ -1,5 +1,82 @@
 {% extends 'layout/base_resto.html' %}
 
 {% block content %}
-<p>Halaman Resto (Dashboard)</p>
+
+{% set data = [
+    {
+        'name': 'Nasi Goreng',
+        'foto': 'nasi_goreng.jpg',
+        'type': 'edible',
+        'stock': 0,
+        'price': 15000
+    },
+    {
+        'name': 'Nasi Kukus',
+        'foto': 'nasi_kukus.jpg',
+        'type': 'edible',
+        'stock': 1,
+        'price': 15000
+    }
+] %}
+<div class="container mx-auto px-6 py-6">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-[#0D402D]">
+            Daftar Produk
+        </h2>
+        <a href="/tambah" class="px-4 py-2 bg-[#0D402D] text-white font-semibold rounded-full hover:bg-[#0A3626] transition">
+            Add
+        </a>
+    </div>
+    <div class="hidden md:grid grid-cols-8 bg-[#D4D925] text-[#0a3324] font-semibold rounded-t-2xl p-4 gap-4">
+        <div class="text-center">No</div>
+        <div class="text-center">Gambar</div>
+        <div class="text-left">Nama Produk</div>
+        <div class="text-left">Jenis Produk</div>
+        <div class="text-center">Stock</div>
+        <div class="text-center">Status</div>
+        <div class="text-center">Harga</div>
+        <div class="text-center">Action</div>
+    </div>
+    <div class="space-y-4 mt-2">
+        {% if data|length == 0 %}
+            <p class="text-gray-500 italic">
+                Belum ada produk ditambahkan
+            </p>
+        {% endif %}
+        {% for f in data %}
+        <div class="grid grid-cols-8 items-center gap-4 p-4 rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <div class="text-center font-semibold text-gray-800">
+                {{ loop.index }}
+            </div>
+            <div class="flex items-center justify-center">
+                <img src="/static/uploads/{{ f.foto }}" class="w-16 h-16 rounded-lg object-cover border">
+            </div>
+            <div class="text-left">
+                {{ f.name }}
+            </div>
+            <div class="text-left">
+                {{ f.type }}
+            </div>
+            <div class="text-center">
+                {{ f.stock }}
+            </div>
+            <div class="text-center">
+                {% if f.stock > 0 %}
+                    <span class="px-2 py-1 rounded-full bg-green-100 text-green-700 text-sm">Available</span>
+                {% else %}
+                    <span class="px-2 py-1 rounded-full bg-red-100 text-red-700 text-sm">Out of Stock</span>
+                {% endif %}
+            </div>
+            <div class="text-center">
+                Rp {{ f.price }}
+            </div>
+            <div class="flex justify-center">
+                <a href="/edit" class="px-3 py-1 rounded-xl border border-[#0D402D] text-[#0D402D] hover:bg-[#0D402D] hover:text-white transition text-sm">
+                    Edit
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
