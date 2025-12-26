@@ -1,12 +1,13 @@
 {
-  "name": "rifud",
-  "version": "1.0.0",
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i ./static/src/input.css -o ./static/dist/output.css --watch"
+      "dev": "npx @tailwindcss/cli -i ./static/src/input.css -o ./static/dist/output.css --watch",
+      "build": "npx @tailwindcss/cli -i ./static/src/input.css -o ./static/dist/output.css --minify"
+    },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.17",
-    "flowbite": "^4.0.1",
-    "tailwindcss": "^4.1.17"
+    "flowbite": "^4.0.1"
   }
 }
