@@ -10,6 +10,19 @@ def index():
 def register():
     return render_template('auth/register.html')
 
+@pages.route('/register-resto')
+def register_resto():
+    return render_template('auth/register_resto.html')
+
 @pages.route('/login')
 def login():
     return render_template('auth/login.html')
+
+@pages.route('/profile')
+def profile():
+    return render_template('shared/profile.html')
+
+
+@pages.route('/order-history')
+def order_history():
+    return render_template('user/order_history.html')

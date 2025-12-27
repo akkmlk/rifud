@@ -115,5 +115,202 @@
     </div>
 </section>
 
+<section class="m-2">
+    <div class="flex flex-col space-y-20 items-center justify-center">
+        <h1 class="text-primary font-bold text-5xl">
+            Food Recommendation
+        </h1>
+        
+    </div>
+    <form class="flex flex-wrap gap-7 items-center m-10">
+        <!-- Dropdown Lokasi -->
+        <div class="">
+            
+            <select id="lokasi" class="block w-full px-8  py-3 bg-yellow-400 border border-default-medium text-black text-sm rounded-full focus:ring-primary focus:border-primary shadow-xs">
+                <option value="">Semua Lokasi</option>
+                <!-- Diisi oleh JS -->
+            </select>
+        </div>
+
+        <!-- Dropdown Tipe -->
+        <div class="relative">
+            <select id="type" class="block w-full  px-7 py-2.5 bg-yellow-400 border border-default-medium text-heading text-sm rounded-full focus:ring-primary focus:border-primary shadow-xs">
+                <option value="">Semua Tipe</option>
+                <option value="">Semua Tipe</option>
+                <!-- Diisi oleh JS -->
+            </select>
+        </div>
+
+        <div>
+
+            <input
+                    type="checkbox"
+                    id="nearYou"
+                    class="hidden peer"
+                />
+        
+                <label
+                    for="nearYou"
+                    class="flex items-center px-4 py-2 rounded-full font-medium cursor-pointer
+                        bg-yellow-400 text-black
+                        hover:bg-yellow-400/90 
+                        hover:text-primary
+                        peer-checked:bg-primary
+                        peer-checked:text-yellow-400
+                        peer-checked:border-brand-subtle
+                        peer-checked:hover:bg-primary 
+                        peer-checked:hover:text-yellow-400">
+                        Near You
+                        
+                </label>
+        </div>
+    </form>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-20 m-10 ">
+        {% from "components/food_card.html" import foodCard %}
+        {{foodCard(
+            "Nasi Goreng",
+            "Blenger Food",
+            "bg-2.png",
+            "10000",
+            "100m"
+        )}}
+        {% for food in foods %}
+            {{ foodCard(
+                food.name,
+                food.resto,
+                food.image,
+                food.price,
+                food.distance
+            ) }}
+        {% endfor %}
+    </div>
+
+</section>
+<section>
+    <div class="flex h-screen gap-3 bg-gray-100 p-3">
+        <!-- Sidebar -->
+        <aside class="w-96 bg-white border border-gray-200 rounded-lg p-4 overflow-auto hidden md:block">
+            <h3 class="text-xl font-bold text-gray-800">Simple Locator</h3>
+            <p class="text-gray-600 text-sm mt-2 mb-4">
+            Contoh menampilkan titik lokasi dan lokasi pengguna (watch).
+            </p>
+
+            <div class="flex gap-2 mb-3">
+            <input id="q" placeholder="Cari lokasi (judul/daerah)..." class="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500" />
+            <button id="clear" class="p-2 text-gray-500 hover:bg-gray-100 rounded-lg">✕</button>
+            </div>
+
+            <div id="list" class="mb-4"></div>
+
+            <hr class="my-4">
+            <div class="text-sm text-gray-600">
+            Cara pakai:
+            <ol class="pl-5 mt-2 space-y-1">
+                <li>1. Buka halaman dan izinkan lokasi saat diminta.</li>
+                <li>2. Klik daftar untuk mengarahkan peta ke marker.</li>
+                <li>3. Gunakan tombol "Petunjuk Arah" untuk buka Google Maps.</li>
+            </ol>
+            </div>
+        </aside>
+
+        <!-- Map -->
+        <div class="flex-1 relative rounded-lg overflow-hidden">
+            <div id="map" class="w-full h-full"></div>
+            <div id="location-status" class="absolute left-3 bottom-3 bg-white px-3 py-2 rounded-xl shadow-md text-sm z-10">
+            Menunggu izin lokasi...
+            </div>
+        </div>
+</div>
+</section>
+<section class="m-2">
+    <div class="flex flex-col space-y-20 items-start ms-10 justify-center">
+        <h1 class="text-primary font-bold text-5xl">
+            Order History
+        </h1>
+        
+    </div>
+    <form class="flex flex-wrap gap-7 items-center m-10">
+        <!-- Dropdown Lokasi -->
+        <div>
+
+            <input
+                type="checkbox"
+                id="cancelled"
+                class="hidden peer"
+            />
+    
+            <label
+                for="cancelled"
+                class="flex items-center px-4 py-2 rounded-full font-medium cursor-pointer
+                    bg-yellow-400 text-black
+                    hover:bg-yellow-400/90 
+                    hover:text-primary
+                    peer-checked:bg-primary
+                    peer-checked:text-yellow-400
+                    peer-checked:border-brand-subtle
+                    peer-checked:hover:bg-primary 
+                    peer-checked:hover:text-yellow-400">
+                    Near You
+            </label>
+        </div>
+        <div>
+
+            <input
+                type="checkbox"
+                id="succes"
+                class="hidden peer"
+            />
+    
+            <label
+                for="succes"
+                class="flex items-center px-4 py-2 rounded-full font-medium cursor-pointer
+                    bg-yellow-400 text-black
+                    hover:bg-yellow-400/90 
+                    hover:text-primary
+                    peer-checked:bg-primary
+                    peer-checked:text-yellow-400
+                    peer-checked:border-brand-subtle
+                    peer-checked:hover:bg-primary 
+                    peer-checked:hover:text-yellow-400">
+                    Near You
+            </label>
+        </div>
+        <!-- Dropdown Tipe -->
+        <div>
+            <input
+                type="checkbox"
+                id="waiting"
+                class="hidden peer"
+            />
+    
+            <label
+                for="waiting"
+                class="flex items-center px-4 py-2 rounded-full font-medium cursor-pointer
+                    bg-yellow-400 text-black
+                    hover:bg-yellow-400/90 
+                    hover:text-primary
+                    peer-checked:bg-primary
+                    peer-checked:text-yellow-400
+                    peer-checked:border-brand-subtle
+                    peer-checked:hover:bg-primary 
+                    peer-checked:hover:text-yellow-400">
+                    Near You
+            </label>
+        </div>
+    </form>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-20 m-10 ">
+        {% from "components/history_order_card.html" import historyCard %}
+        {{historyCard()}}
+        {{historyCard()}}
+        {{historyCard()}}
+        {{historyCard()}}
+        {{historyCard()}}
+        {{historyCard()}}
+    </div>
+
+</section>
+
 
 {% endblock %}
