@@ -73,6 +73,41 @@ def get_available_city():
     cur.close()
     return citys
 
+def get_your_order(id):
+    cur = mysql.connection.cursor(DictCursor)
+    cur.execute("""
+        SELECT 
+            users.foto AS foto_resto,
+            transactions.id AS id_transaction,
+            food_waste.name AS name,
+            food_waste.foto AS foto_fw,
+            food_waste.description AS description,
+            transactions.status AS status,
+            transactions.price_total AS price_total,
+            CONCAT(
+                CASE DAYNAME(transactions.transaction_date)
+                    WHEN 'Monday' THEN 'Senin'
+                    WHEN 'Tuesday' THEN 'Selasa'
+                    WHEN 'Wednesday' THEN 'Rabu'
+                    WHEN 'Thursday' THEN 'Kamis'
+                    WHEN 'Friday' THEN 'Jumat'
+                    WHEN 'Saturday' THEN 'Sabtu'
+                    WHEN 'Sunday' THEN 'Minggu'
+                END,
+                ', ',
+                DATE_FORMAT(transactions.transaction_date, '%%H:%%i:%%s')
+            ) AS transaction_date
+        FROM transactions
+        JOIN food_waste ON transactions.food_waste_id = food_waste.id
+        JOIN users ON transactions.user_id = users.id
+        WHERE users.id = %s 
+                AND transactions.status IN ('pending', 'waiting', 'ready')
+        ORDER BY transactions.transaction_date ASC
+    """, (id,))
+    transactions_history = cur.fetchall()
+    cur.close()
+    return transactions_history
+
 def get_transactions_history(id):
     cur = mysql.connection.cursor(DictCursor)
     cur.execute("""
@@ -101,7 +136,7 @@ def get_transactions_history(id):
         JOIN food_waste ON transactions.food_waste_id = food_waste.id
         JOIN users ON transactions.user_id = users.id
         WHERE users.id = %s 
-                AND transactions.status IN ('success', 'cancel')
+                AND transactions.status IN ('success', 'cancel', 'declined')
         ORDER BY transactions.transaction_date ASC
     """, (id,))
     transactions_history = cur.fetchall()
@@ -136,6 +171,31 @@ def user_registration(name, email, password):
     user = cur.fetchone()
     cur.close()
     return user
+
+def insert_transaction(qty, price_total, transaction_date, status, payment_type, user_id, food_waste_id):
+    cur = mysql.connection.cursor(DictCursor)
+    cur.execute("""
+            INSERT INTO transactions(
+                qty, 
+                price_total, 
+                transaction_date,
+                status,
+                payment_type,
+                user_id,
+                food_waste_id)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """, (qty, price_total, transaction_date, status, payment_type, user_id, food_waste_id))
+    mysql.connection.commit()
+    
+    transaction_id = cur.lastrowid
+    cur.execute("SELECT * FROM transactions WHERE id = %s", (transaction_id, ))
+    transaction = cur.fetchone()
+    cur.close()
+
+    if transaction.get('transaction_date'):
+        transaction['transaction_date'] = str(transaction['transaction_date'])
+
+    return transaction
 
 def get_order(resto_id):
     cur = mysql.connection.cursor(DictCursor)
