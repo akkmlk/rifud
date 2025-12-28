@@ -26,7 +26,7 @@ def tambah():
 def edit():
     return render_template('resto/edit.html')
 
-@pages.route('/frameset')
+@pages.route('/dashboard')
 def frameset():
     return render_template('resto/frameset.html')
 
