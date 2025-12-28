@@ -8,8 +8,7 @@ from routes.api_food_waste import food_waste_api
 from routes.ui_pages import pages
 load_dotenv()
 
-# app = Flask(os.environ.get("APP_NAME"))
-app = Flask(__name__)
+app = Flask(os.environ.get("APP_NAME"))
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MYSQL_HOST"] = os.environ.get("MYSQL_HOST")
 app.config['MYSQL_PORT'] = int(os.environ.get("MYSQL_PORT"))
