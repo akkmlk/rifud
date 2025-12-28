@@ -1,5 +1,8 @@
-node_modules
-myenv
-.env
-*.pyc
+node_modules/
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+instance/
+myenv
+.env.*
