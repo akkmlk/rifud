@@ -1,0 +1,45 @@
+{% extends 'layout/base_user.html' %}
+{% from 'components/order_history_card.html' import orderHistoryCard %}
+{% block content %}
+<div class="relative overflow-x-auto">
+  <div class="p-4 items-center">  
+    <a class="self-center">
+      <span class="text-3xl text-heading font-bold whitespace-nowrap">Riwayat Transaksi</span>
+    </a>
+  </div>
+  <div class="p-4 flex items-center justify-between flex-wrap gap-4">
+    <div class="flex items-center gap-4 flex-wrap">
+      <button type="button" class="text-white bg-primary box-border hover:bg-primary-soft focus:ring-4 focus:ring-accent-medium shadow-xs font-medium leading-5 rounded text-sm px-3 py-2 focus:outline-none">
+        Show
+      </button>
+      <button type="button" class="text-white bg-accent box-border hover:bg-accent-soft focus:ring-4 focus:ring-accent-medium shadow-xs font-medium leading-5 rounded text-sm px-3 py-2 focus:outline-none">
+        Show
+      </button>
+      <button type="button" class="bg-gray-300 hover:bg-gray-200 focus:ring-4 focus:ring-accent-medium shadow-xs font-medium leading-5 rounded text-sm px-3 py-2 focus:outline-none">
+        Show
+      </button>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button type="button" class="bg-gray-300 box-border hover:bg-gray-200 focus:ring-4 focus:ring-accent-medium shadow-xs font-medium leading-5 rounded text-sm px-3 py-2 focus:outline-none">
+        Show
+      </button>
+    </div>
+  </div>
+</div>
+<div class="p-4 justify-between flex flex-wrap ">
+  {{ orderHistoryCard(
+    "/static/images/bg-1.png",
+    "/static/images/bg-1.png",
+    "Bingo", 
+    "order#1111", 
+    "minggu, 17-11-2025", 
+    "Ready",
+    "Odading",
+    "Bingo, Bango, Bongo, Bingo, Bango, Bongo, Bingo, Bango, Bongo, Bingo, Bango, Bongo, Bingo, Bango, Bongo, Bingo, Bango, Bongo, Bingo, Bango, Bongo, Bingo, Bango, Bongo, Bingo, Bango, Bongo, ", 
+    "Rp. 400"
+    ) 
+  }}
+</div>
+
+{% endblock %}
