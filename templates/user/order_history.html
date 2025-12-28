@@ -1,0 +1,94 @@
+{% extends 'layout/base_user.html' %}
+{% block content %}
+
+<section class="m-2">
+    <div class="flex flex-col space-y-20 items-start ms-10 justify-center">
+        <h1 class="text-primary font-bold text-5xl">
+            Order History
+        </h1>
+        
+    </div>
+    <form class="flex flex-wrap gap-7 items-center m-10">
+        <!-- Dropdown Lokasi -->
+        <div>
+
+            <input
+                type="checkbox"
+                id="cancelled"
+                class="hidden peer"
+            />
+    
+            <label
+                for="cancelled"
+                class="flex items-center px-4 py-2 rounded-full font-medium cursor-pointer
+                    bg-yellow-400 text-black
+                    hover:bg-yellow-400/90 
+                    hover:text-primary
+                    peer-checked:bg-primary
+                    peer-checked:text-yellow-400
+                    peer-checked:border-brand-subtle
+                    peer-checked:hover:bg-primary 
+                    peer-checked:hover:text-yellow-400">
+                    Near You
+            </label>
+        </div>
+        <div>
+
+            <input
+                type="checkbox"
+                id="succes"
+                class="hidden peer"
+            />
+    
+            <label
+                for="succes"
+                class="flex items-center px-4 py-2 rounded-full font-medium cursor-pointer
+                    bg-yellow-400 text-black
+                    hover:bg-yellow-400/90 
+                    hover:text-primary
+                    peer-checked:bg-primary
+                    peer-checked:text-yellow-400
+                    peer-checked:border-brand-subtle
+                    peer-checked:hover:bg-primary 
+                    peer-checked:hover:text-yellow-400">
+                    Near You
+            </label>
+        </div>
+        <!-- Dropdown Tipe -->
+        <div>
+            <input
+                type="checkbox"
+                id="waiting"
+                class="hidden peer"
+            />
+    
+            <label
+                for="waiting"
+                class="flex items-center px-4 py-2 rounded-full font-medium cursor-pointer
+                    bg-yellow-400 text-black
+                    hover:bg-yellow-400/90 
+                    hover:text-primary
+                    peer-checked:bg-primary
+                    peer-checked:text-yellow-400
+                    peer-checked:border-brand-subtle
+                    peer-checked:hover:bg-primary 
+                    peer-checked:hover:text-yellow-400">
+                    Near You
+            </label>
+        </div>
+    </form>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-20 m-10 ">
+        {% from "components/history_order_card.html" import historyCard %}
+        {{historyCard(
+            "SRT",
+            "minggu,12-09-2020",
+            "pending",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus porro voluptas, cum nesciunt unde reiciendis et neque iusto iure nam repellendus quia quos maiores, labore, deleniti hic est libero atque.",
+            "2000",
+            "bg-2.png")}}
+        
+    </div>
+
+</section>
+{% endblock %}
