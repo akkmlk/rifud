@@ -110,7 +110,7 @@ def get_transactions_history(id):
 
 def login(email):
     cur = mysql.connection.cursor(DictCursor)
-    cur.execute("SELECT id, name, phone, email, password, address FROM users WHERE email = %s", (email, ))
+    cur.execute("SELECT id, name, phone, email, password, address, role FROM users WHERE email = %s", (email, ))
     data = cur.fetchone()
     cur.close()
     return data
