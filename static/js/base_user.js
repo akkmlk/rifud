@@ -1,8 +1,50 @@
+// if conditnion navbar
+document.addEventListener('DOMContentLoaded', () => {
+    const role = sessionStorage.getItem('role');
+
+    const btnLogout = document.getElementById('btnLogout')
+    btnLogout.addEventListener('click', (e) => {
+        e.preventDefault()
+        sessionStorage.clear()
+        window.location.href = '/'
+    })
+
+    const btnLogin2 = document.getElementById('btnLogin2')
+    const btnProfile1 = document.getElementById('btnProfile1')
+    const btnProfile2 = document.getElementById('btnProfile2')
+
+    btnLogin2.classList.remove('hidden')
+    btnProfile1.classList.add('hidden')
+    // btnProfile2.classList.add('hidden')
+    // if (!role) {
+    // }
+
+    if (role === 'client') {
+        document.getElementById('transaction-menu').classList.remove('hidden')
+        document.getElementById('transaction-history-menu').classList.remove('hidden')
+        btnProfile1.classList.remove('hidden')
+        // btnProfile2.classList.remove('hidden')
+
+        btnLogin2.classList.add('hidden')
+    }
+    // dropdown profile
+    const dropdown = document.getElementById('profile-dropdown-menu')
+
+    btnProfile1.addEventListener('click', () => {
+        dropdown.classList.toggle('hidden')
+    })
+
+    btnProfile2.addEventListener('click', () => {
+        dropdown.classList.toggle('hidden')
+    })
+})
+
+
 
 const filters = {
-  lokasi: '',
-  tipe: '',
-  near_you: false
+    lokasi: '',
+    tipe: '',
+    near_you: false
 };
 
 // Ambil data dropdown dari API dan isi dropdown
@@ -18,20 +60,20 @@ async function populateDropdowns() {
         const lokasiSelect = document.getElementById('lokasi');
         lokasiSelect.innerHTML = '<option value="">Semua Lokasi</option>';
         lokasiData.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.id || item.nama;
-        option.textContent = item.nama;
-        lokasiSelect.appendChild(option);
+            const option = document.createElement('option');
+            option.value = item.id || item.nama;
+            option.textContent = item.nama;
+            lokasiSelect.appendChild(option);
         });
 
-    // Isi dropdown Tipe
+        // Isi dropdown Tipe
         const typeSelect = document.getElementById('type');
         typeSelect.innerHTML = '<option value="">Semua Tipe</option>';
         typeData.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.id || item.nama;
-        option.textContent = item.nama;
-        typeSelect.appendChild(option);
+            const option = document.createElement('option');
+            option.value = item.id || item.nama;
+            option.textContent = item.nama;
+            typeSelect.appendChild(option);
         });
 
         // Tambahkan event listener setelah dropdown diisi
@@ -102,7 +144,7 @@ async function fetchLocations() {
 /* =========================
    Init Leaflet map
    ========================= */
-const map = L.map('map').setView([-6.2,106.85], 11);
+const map = L.map('map').setView([-6.2, 106.85], 11);
 
 // OSM tiles (gratis)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -120,9 +162,9 @@ const icon = L.icon({
         <text x="12" y="15" font-size="10" text-anchor="middle" fill="#a00" font-family="Arial" font-weight="700">S</text>
         </svg>`
     ),
-    iconSize: [36,36],
-    iconAnchor: [18,36],
-    popupAnchor: [0,-36]
+    iconSize: [36, 36],
+    iconAnchor: [18, 36],
+    popupAnchor: [0, -36]
 });
 
 // add markers to map
@@ -141,7 +183,7 @@ function addMarkersToMap() {
    ========================= */
 const listEl = document.getElementById('list');
 
-function renderList(items){
+function renderList(items) {
     listEl.innerHTML = '';
     items.forEach(item => {
         const el = document.createElement('div');
@@ -153,19 +195,19 @@ function renderList(items){
         `;
         // click whole item -> fly to marker
         el.addEventListener('click', (ev) => {
-        // avoid clicking the inner link (petunjuk arah) from firing fly-to
-        if(ev.target && ev.target.matches('a')) return;
-        const m = markers[item.id];
-        if(m){
-            map.flyTo(m.getLatLng(), 15, { duration: 0.6 });
-            m.openPopup();
-        }
+            // avoid clicking the inner link (petunjuk arah) from firing fly-to
+            if (ev.target && ev.target.matches('a')) return;
+            const m = markers[item.id];
+            if (m) {
+                map.flyTo(m.getLatLng(), 15, { duration: 0.6 });
+                m.openPopup();
+            }
         });
 
         // petunjuk arah link
         el.querySelector('a').addEventListener('click', (ev) => {
-        ev.stopPropagation();
-        window.open(`https://www.google.com/maps/dir/?api=1&destination=${item.lat},${item.lng}`, '_blank');
+            ev.stopPropagation();
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${item.lat},${item.lng}`, '_blank');
         });
 
         listEl.appendChild(el);
@@ -179,20 +221,20 @@ const q = document.getElementById('q');
 const clear = document.getElementById('clear');
 q.addEventListener('input', () => {
     const v = q.value.trim().toLowerCase();
-    if(!v) {
+    if (!v) {
         renderList(locations);
-        for(const id in markers) markers[id].addTo(map);
+        for (const id in markers) markers[id].addTo(map);
         return;
     }
     const filtered = locations.filter(l => (l.name + ' ' + l.addr).toLowerCase().includes(v));
     renderList(filtered);
     // only show filtered markers
-    for(const id in markers){
+    for (const id in markers) {
         const show = filtered.some(f => f.id == id);
-        if(show) markers[id].addTo(map); else map.removeLayer(markers[id]);
+        if (show) markers[id].addTo(map); else map.removeLayer(markers[id]);
     }
 });
-clear.addEventListener('click', () => { q.value=''; q.dispatchEvent(new Event('input')); });
+clear.addEventListener('click', () => { q.value = ''; q.dispatchEvent(new Event('input')); });
 
 /* =========================
    User location (watchPosition). Browser will prompt for permission.
@@ -203,7 +245,7 @@ let userCircle = null;
 // Ganti ID ini agar tidak bentrok
 const locationStatus = document.getElementById('location-status');
 
-if('geolocation' in navigator){
+if ('geolocation' in navigator) {
     const opts = { enableHighAccuracy: true, maximumAge: 10000, timeout: 10000 };
 
     const success = pos => {
@@ -214,24 +256,24 @@ if('geolocation' in navigator){
         // Ganti juga di sini
         locationStatus.textContent = `Kamu: ${lat.toFixed(5)}, ${lng.toFixed(5)} (akurat ±${Math.round(acc)} m)`;
 
-        if(!userMarker){
-        userMarker = L.marker([lat,lng], {
-            // simple blue circle marker
-            icon: L.icon({
-            iconUrl: 'data:image/svg+xml;utf8,' + encodeURIComponent(
-                `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+        if (!userMarker) {
+            userMarker = L.marker([lat, lng], {
+                // simple blue circle marker
+                icon: L.icon({
+                    iconUrl: 'data:image/svg+xml;utf8,' + encodeURIComponent(
+                        `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" fill="#2b8cff" stroke="#1a6fe8" stroke-width="1.5"/>
                 </svg>`
-            ),
-            iconSize:[28,28], iconAnchor:[14,14]
-            })
-        }).addTo(map).bindPopup('Kamu di sini');
-        userCircle = L.circle([lat,lng], { radius: acc, color:'#2b8cff', weight:1, fillOpacity:0.08 }).addTo(map);
-        map.setView([lat,lng], 14);
-        userMarker.openPopup();
-        }else{
-        userMarker.setLatLng([lat,lng]);
-        userCircle.setLatLng([lat,lng]).setRadius(acc);
+                    ),
+                    iconSize: [28, 28], iconAnchor: [14, 14]
+                })
+            }).addTo(map).bindPopup('Kamu di sini');
+            userCircle = L.circle([lat, lng], { radius: acc, color: '#2b8cff', weight: 1, fillOpacity: 0.08 }).addTo(map);
+            map.setView([lat, lng], 14);
+            userMarker.openPopup();
+        } else {
+            userMarker.setLatLng([lat, lng]);
+            userCircle.setLatLng([lat, lng]).setRadius(acc);
         }
     };
 
@@ -251,8 +293,8 @@ if('geolocation' in navigator){
 /* =========================
    Small helper
    ========================= */
-function escapeHtml(s){
-    return String(s || '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function escapeHtml(s) {
+    return String(s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
 // Load data saat halaman dimuat

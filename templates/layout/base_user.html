@@ -19,44 +19,102 @@
                 <img src="static\images\Group 6.png" class="h-7" alt="rifud logo" />
                 <span class="self-center text-xl text-heading font-semibold whitespace-nowrap"></span>
             </a>
-            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden bg-accent hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary" aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>
-            </button>
-            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul class="font-medium flex flex-col p-4 md:p-2 mt-4 border border-default rounded-base md:flex-row md:space-x-10 rtl:space-x-reverse md:mt-0 md:border-0 ">
-                <li>
-                    <a href="/" class="block py-2 px-3 text-accent bg-brand rounded md:bg-transparent md:text-accent md:p-0" aria-current="page">HOME</a>
-                </li>
-                <li>
-                    <a href="#" class="block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">ABOUT US</a>
-                </li>
-                {% if session.get('role') == 'client' %}
-                <li>
-                    <a href="#" class="block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">TRANSACTIOM</a>
-                </li>
-                <li>
-                    <a href="#" class="block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">ORDER HISTORY</a>
-                </li>
-                    <a href="/login" class="md:hidden block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">Login</a>
-                </li>
-                </li>
-                    <a href="/register" class="md:hidden block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">Daftar</a>
-                </li>
-                {% endif %}
-                <li>
-                    <a href="#" class="block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">CONTACT</a>
-                </li>
-                </li>
-                    <a href="/register" class=" block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">DAFTAR RESTO</a>
-                </li>
-            </ul>
-            </div>
-            <div class="hidden md:block flex flex-warp  bg-accent rounded-base">
-                <button class="m-1 w-15 ">
-                    <a href="/login">login</a>
+            <div class="flex items-center md:order-2 space-x-2">
+
+                <!-- LOGIN BUTTON -->
+                <div id="btnLogin1" class="hidden bg-accent rounded-base">
+                    <a href="/login" class="block px-4 py-2">Login</a>
+                </div>
+
+                <button type="button" id="btnProfile1" data-dropdown-toggle="profile-dropdown-menu1" class="hidden md:hidden text-white font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 text-accent" viewBox="0 0 640 640"><path d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z"/></svg>
+                </button>
+                <!-- Dropdown -->
+                <div class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44" id="profile-dropdown-menu1">
+                    <ul class="p-2 text-sm text-body font-medium" role="none">
+                        <li>
+                        <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">
+                            <div class="inline-flex items-center">
+                                Profile
+                            </div>
+                        </a>
+                        </li>
+                        <li>
+                            <a href="" id="btnLogout" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">
+                                <div class="inline-flex items-center">
+                                    Logout
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- HAMBURGER -->
+                <button
+                    data-collapse-toggle="navbar-default"
+                    type="button"
+                    class="items-center justify-center w-10 h-10 hidden md:hidden bg-accent rounded-base"
+                >
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+                    </svg>
                 </button>
             </div>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-2 mt-4 border border-default rounded-base md:flex-row md:space-x-10 rtl:space-x-reverse md:mt-0 md:border-0 ">
+                    <li>
+                        <a href="/" class="block py-2 px-3 text-accent bg-brand rounded md:bg-transparent md:text-accent md:p-0" aria-current="page">HOME</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">ABOUT US</a>
+                    </li>
+                    <li class="hidden" id="transaction-menu">
+                        <a href="#" class="block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">TRANSACTION</a>
+                    </li>
+                    <li class="hidden" id="transaction-history-menu">
+                        <a href="#" class="block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">ORDER HISTORY</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">CONTACT</a>
+                    </li>
+                    </li>
+                        <a href="/register-resto" class=" block py-2 px-3 text-white rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 md:dark:hover:bg-transparent">DAFTAR RESTO</a>
+                    </li>
+                </ul>
+            </div>
+            <button type="button" id="btnProfile2" data-dropdown-toggle="profile-dropdown-menu2" class="hidden md:block text-white font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 text-accent" viewBox="0 0 640 640"><path d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z"/></svg>
+            </button>
+            <div class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44" id="profile-dropdown-menu2">
+                <ul class="p-2 text-sm text-body font-medium" role="none">
+                <li>
+                    <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">
+                    <div class="inline-flex items-center">
+                        Profile
+                    </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" id="btnLogout" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">
+                    <div class="inline-flex items-center">
+                        Logout
+                    </div>
+                    </a>
+                </li>
+                </ul>
+            </div>
+            <div id="btnLogin2" class="hidden bg-accent rounded-base">
+                <a href="/login" class="block px-4 py-2">Login</a>
+            </div>
+            <button
+                data-collapse-toggle="navbar-default"
+                type="button"
+                class="flex items-center justify-center w-10 h-10 md:hidden bg-accent rounded-base"
+            >
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+                </svg>
+            </button>
         </div>
     </nav>
     <header>

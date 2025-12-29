@@ -37,3 +37,7 @@ def tambah():
 @pages.route('/edit')
 def edit():
     return render_template('resto/edit.html')
+
+@pages.route('/navbar')
+def navbar():
+    return render_template('components/navbar.html')
