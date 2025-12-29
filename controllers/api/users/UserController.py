@@ -1,10 +1,11 @@
 from flask import Blueprint, jsonify, request
 import os
+from datetime import datetime, timedelta
 from uuid import uuid4
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash
 from utils.res_wrapper import success_response, error_response
-from models.user import get_profile, get_available_city, get_transactions_history, login, resto_registration, user_registration, get_order_history, get_order, put_profile
+from models.user import get_profile, get_available_city, get_your_order, get_transactions_history, login, resto_registration, user_registration, insert_transaction, get_order_history, get_order, put_profile
 from werkzeug.security import check_password_hash, generate_password_hash
 
 def profile_user(id):
@@ -77,6 +78,18 @@ def available_city():
         print(e)
         return error_response(message="Internal server error", res_code=500)
     
+def your_order(id):
+    try:
+        your_order = get_your_order(id)
+
+        if not your_order:
+            return error_response("Data tidak tersediaaaaa", res_code=404)
+        else:
+            return success_response(data=your_order)
+    except Exception as e:
+        print(e)
+        return error_response(message="Internal server error", res_code=500)
+
 def transactions_history(id):
     try:
         transactions_history = get_transactions_history(id)
@@ -167,3 +180,25 @@ def user_registration_proccess():
         return error_response("Gagal daftar", res_code=404)
     
     return success_response("Daftar berhasil", data=user, res_code=200)
+
+def transaction():
+    data = request.get_json()
+    qty = data.get('qty')   #qty ini juga sebagai KG (jika type food waste yg dibeli nya adalah waste)
+    price_food = data.get('price')
+    payment_type = data.get('payment_type')
+    user_id = data.get('user_id')
+    food_waste_id = data.get('food_waste_id')
+
+    transaction_date = datetime.now()
+    status = 'pending'
+
+    if not qty or not price_food or not payment_type or not user_id or not food_waste_id:
+        return error_response("Wajib mengisi semua data", res_code=400)
+    
+    price_total = qty * price_food
+    transaction = insert_transaction(qty, price_total, transaction_date, status, payment_type, user_id, food_waste_id)
+
+    if not transaction:
+        return error_response("Gagal transaksi", res_code=404)
+    
+    return success_response("Transaksi berhasil", data=transaction, res_code=200)

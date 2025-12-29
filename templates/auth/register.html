@@ -20,20 +20,23 @@
         <p class="text-white/80 mb-8">Masukan data anda</p>
 
         <!-- Form -->
-        <form class="space-y-4">
+        <form class="space-y-4" id="registerForm">
             
             <input
+            id="name"
             type="text"
             placeholder="Nama Lengkap"
             class="w-full rounded-full bg-white/10 border border-white/10 px-5 py-3 text-sm placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent"
             >
             <input
+            id="email"
             type="email"
             placeholder="email"
             class="w-full rounded-full bg-white/10 border border-white/10 px-5 py-3 text-sm placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent"
             >
 
             <input
+            id="password"
             type="password"
             placeholder="password"
             class="w-full rounded-full bg-white/10 border border-white/10 px-5 py-3 text-sm placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent"
@@ -56,5 +59,5 @@
             >
         </div>
 </div>
-
+<script src="{{ url_for('static', filename='js/auth/registerUser.js') }}"></script>
 {% endblock %}

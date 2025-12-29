@@ -20,22 +20,25 @@
       <p class="text-white/80 mb-8">lorem ipsum dolor sit amet</p>
 
       <!-- Form -->
-      <form class="space-y-4">
+      <form class="space-y-4" id="loginForm">
         
         <input
           type="email"
           placeholder="email"
+          id="email"
           class="w-full rounded-full bg-white/10 border border-white/10 px-5 py-3 text-sm placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent"
         >
 
         <input
           type="password"
+          id="password"
           placeholder="password"
           class="w-full rounded-full bg-white/10 border border-white/10 px-5 py-3 text-sm placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent"
         >
 
         <button
           type="submit"
+          id="btnSubmit"
           class="mt-4 inline-block rounded-full bg-accent text-primary font-semibold px-10 py-3 hover:bg-accent-soft transition">
           {{button}}
         </button>
@@ -52,4 +55,5 @@
     </div>
 
   </div>
+  <script src="{{ url_for('static', filename='js/auth/login.js') }}"></script>
 {% endmacro %}
