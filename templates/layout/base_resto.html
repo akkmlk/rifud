@@ -4,100 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Resto</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <link href="{{url_for('static',filename='dist/output.css')}}" rel="stylesheet">\
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
-<body class="bg-primary">
+    <link href="{{url_for('static',filename='dist/output.css')}}" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#F2E1D1]">
+<!-- <body class="bg-gray-100"> -->
+    <header>
+        <h1 class="font-bold text-fuchsia-800"></h1>
+    </header>
     <main>
         {% block content %}
         {% endblock %}
     </main>
     <footer class="w-full bg-primary text-gray-300 py-10 mt-20" id="Contact" >
-    <div class="max-w-screen-xl mx-auto px-6">
+        <div class="max-w-screen-xl mx-auto px-6">
 
-        <!-- TOP -->
-        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-10">
+            <!-- TOP -->
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-10">
 
-            <!-- BRAND -->
-            <div>
-                <a class="flex items-center gap-3">
-                    <img src="static/images/profile.png" class="w-10 h-10 rounded-full border border-gray-600" alt="Logo">
-                    <span class="text-2xl font-bold tracking-wide text-white">AruNiaka</span>
-                </a>
-                <p class="mt-3 text-gray-400 text-sm max-w-sm">
-                    Designer & Frontend Developer — creating expressive visuals with personality.
+                <!-- BRAND -->
+                <div>
+                    <a class="flex items-center gap-3">
+                        <img src="static/images/profile.png" class="w-10 h-10 rounded-full border border-gray-600" alt="Logo">
+                        <span class="text-2xl font-bold tracking-wide text-white">AruNiaka</span>
+                    </a>
+                    <p class="mt-3 text-gray-400 text-sm max-w-sm">
+                        Designer & Frontend Developer — creating expressive visuals with personality.
+                    </p>
+                </div>
+
+                <!-- LINKS -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-10">
+
+                    <!-- Resources -->
+                    <div>
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-white mb-4">Resources</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-white transition">Portfolio</a></li>
+                            <li><a href="#" class="hover:text-white transition">Projects</a></li>
+                            <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Social -->
+                    <div>
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-white mb-4">Social</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-white transition">Instagram</a></li>
+                            <li><a href="#" class="hover:text-white transition">Github</a></li>
+                            <li><a href="#" class="hover:text-white transition">Dribbble</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact -->
+                    <div>
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-white mb-4">Contact</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-white transition">Email</a></li>
+                            <li><a href="#" class="hover:text-white transition">LinkedIn</a></li>
+                            <li><a href="#" class="hover:text-white transition">WhatsApp</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- DIVIDER -->
+            <div class="border-t border-gray-700 my-8"></div>
+
+            <!-- BOTTOM -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
+
+                <p class="text-sm text-gray-400">
+                    © 2024 AruNiaka — All rights reserved.
                 </p>
-            </div>
 
-            <!-- LINKS -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-10">
-
-                <!-- Resources -->
-                <div>
-                    <h3 class="text-sm font-semibold uppercase tracking-wider text-white mb-4">Resources</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition">Portfolio</a></li>
-                        <li><a href="#" class="hover:text-white transition">Projects</a></li>
-                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
-                    </ul>
+                <div class="flex gap-5">
+                    <!-- ICONS -->
+                    <a href="#" class="hover:text-white transition">
+                        <i class="fa-brands fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-white transition">
+                        <i class="fa-brands fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-white transition">
+                        <i class="fa-brands fa-linkedin text-xl"></i>
+                    </a>
                 </div>
 
-                <!-- Social -->
-                <div>
-                    <h3 class="text-sm font-semibold uppercase tracking-wider text-white mb-4">Social</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition">Instagram</a></li>
-                        <li><a href="#" class="hover:text-white transition">Github</a></li>
-                        <li><a href="#" class="hover:text-white transition">Dribbble</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
-                <div>
-                    <h3 class="text-sm font-semibold uppercase tracking-wider text-white mb-4">Contact</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition">Email</a></li>
-                        <li><a href="#" class="hover:text-white transition">LinkedIn</a></li>
-                        <li><a href="#" class="hover:text-white transition">WhatsApp</a></li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- DIVIDER -->
-        <div class="border-t border-gray-700 my-8"></div>
-
-        <!-- BOTTOM -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
-
-            <p class="text-sm text-gray-400">
-                © 2024 AruNiaka — All rights reserved.
-            </p>
-
-            <div class="flex gap-5">
-                <!-- ICONS -->
-                <a href="#" class="hover:text-white transition">
-                    <i class="fa-brands fa-instagram text-xl"></i>
-                </a>
-                <a href="#" class="hover:text-white transition">
-                    <i class="fa-brands fa-github text-xl"></i>
-                </a>
-                <a href="#" class="hover:text-white transition">
-                    <i class="fa-brands fa-linkedin text-xl"></i>
-                </a>
             </div>
 
         </div>
-
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </body>
 </html>
