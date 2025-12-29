@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from utils.res_wrapper import success_response, error_response
 from controllers.api.users.UserController import profile_user, available_city, transactions_history, login_proccess, resto_registration_proccess, user_registration_proccess, order_history, order, edit_profile_user
-from controllers.api.users.FoodWasteController import food_waste_filter, all_food_waste, food_waste_resto_filter, one_food_waste, update_food_waste, delete_food_waste
+from controllers.api.users.FoodWasteController import food_waste_filter, all_food_waste, food_waste_resto_filter, one_food_waste, add_food_waste, update_food_waste, delete_food_waste
 
 food_waste_api = Blueprint("food_waste_api", __name__)
 
@@ -30,6 +30,10 @@ def get_food_waste_resto_filter(user_id, type):
 @food_waste_api.route('/api/food-waste/one/<int:id>', methods=['GET'])
 def get_one_food_waste(id):
     return one_food_waste(id)
+
+@food_waste_api.route('/api/food-waste/add', methods=['POST'])
+def insert_food_waste():
+    return add_food_waste()
 
 @food_waste_api.route('/api/food-waste/update/<int:id>', methods=['PUT'])
 def put_update_food_waste(id):

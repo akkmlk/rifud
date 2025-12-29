@@ -7,15 +7,20 @@ def get_food_waste_filter(city=None, type=None):
     cur = mysql.connection.cursor(DictCursor)
     query = """
                 SELECT 
+                food_waste.id AS id_food_waste,
                 food_waste.name AS name, 
                 food_waste.foto AS foto, 
                 food_waste.price AS price, 
                 food_waste.stock AS stock, 
                 food_waste.description AS description, 
                 food_waste.type AS type, 
+                users.name AS resto_name, 
                 users.city AS city, 
+                users.address AS address,
                 users.open_time AS open, 
-                users.closed_time AS closed 
+                users.closed_time AS closed,
+                users.longitude AS longitude,
+                users.latitude AS latitude
                 FROM food_waste 
                 JOIN users ON food_waste.user_id = users.id 
                 WHERE 1=1
@@ -30,6 +35,9 @@ def get_food_waste_filter(city=None, type=None):
         query += " AND food_waste.type = %s"
         params.append(type)
 
+    query += " AND users.role = %s"
+    params.append("resto")
+    query += " LIMIT 8"
     cur.execute(query, tuple(params))
     data = cur.fetchall()
     cur.close()
@@ -62,6 +70,34 @@ def get_one_food_waste(id):
     data = cur.fetchone()
     cur.close()
     return data
+
+def insert_food_waste(name, description, foto, price, stock, type, user_id):
+    cur = mysql.connection.cursor(DictCursor)
+    cur.execute("""
+            INSERT INTO food_waste(
+                name, 
+                description, 
+                foto, 
+                price, 
+                stock, 
+                type, 
+                user_id)
+            VALUES(%s, %s, %s, %s, %s, %s, %s)
+        """, (name, description, foto, price, stock, type, user_id, )
+    )
+    mysql.connection.commit()
+    id_food_waste = cur.lastrowid
+
+    cur.execute("SELECT * FROM food_waste WHERE id = %s", (id_food_waste, ))
+    food_waste = cur.fetchone()
+    cur.close()
+
+    if food_waste.get('foto'):
+        food_waste['foto_url'] = (url_for('static', filename=food_waste['foto'], _external=True))
+    else:
+        food_waste['foto_url'] = None
+
+    return food_waste
 
 def put_update_food_waste(id, name, description, foto, price, stock, type):
     cur = mysql.connection.cursor(DictCursor)
