@@ -2,9 +2,10 @@
 
 {% block content %}
 <div class="bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+  <!-- Header Section - NO overflow restriction here -->
   <div class="p-4 flex items-center justify-between space-x-4">
     <a class="self-center">
-      <span class="text-xl text-heading font-semibold whitespace-nowrap">Riwayat Pesanan</span>
+      <span class="text-xl text-heading font-semibold whitespace-nowrap">Daftar Pesanan</span>
     </a>
 
     <div class="flex items-center gap-3 flex-wrap">
@@ -49,116 +50,98 @@
       </div>
 
       <!-- button show gw ga tau fungsinya apa tapi disuruh digituin aja dulu sama ketua -->
-      <button type="button" class="text-white bg-accent box-border border border-transparent hover:bg-accent-soft focus:ring-4 focus:ring-accent-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none">
+      <button type="button" class="text-white bg-accent hover:bg-accent-soft focus:ring-4 focus:ring-accent-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2 focus:outline-none">
         Show
       </button>
     </div>
   </div>
 
-  
+  <!-- Table Wrapper - overflow-x-auto hanya di sini -->
   <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-body border-collapse table-auto">
       <thead class="text-white text-sm text-body bg-blend-darken border-b border-default-medium bg-primary-soft">
         <tr>
-          <th scope="col" class="px-3 py-3 rounded-s-base font-medium box-border align-middle">
+          <th scope="col" class="px-8 py-3 rounded-s-base font-medium box-border align-middle">
             <div class="flex items-center h-full">Id</div>
           </th>
-          <th scope="col" class="px-3 py-3 w-20 font-medium box-border align-middle">
+          <th scope="col" class="px-8 py-3 w-20 font-medium box-border align-middle">
             <div class="flex items-center h-full">Gambar</div>
           </th>
-          <th scope="col" class="px-6 py-3 font-medium box-border align-middle">
+          <th scope="col" class="px-8 py-3 font-medium box-border align-middle">
             <div class="flex items-center h-full">Jenis</div>
           </th>
-          <th scope="col" class="px-6 py-3 font-medium box-border align-middle">
+          <th scope="col" class="px-8 py-3 font-medium box-border align-middle">
             <div class="flex items-center h-full">Pembeli</div>
           </th>
-          <th scope="col" class="px-6 py-3 font-medium box-border align-middle">
+          <th scope="col" class="px-8 py-3 font-medium box-border align-middle">
             <div class="flex items-center h-full">Nama</div>
           </th>
-          <th scope="col" class="px-6 py-3 font-medium box-border align-middle">
+          <th scope="col" class="px-8 py-3 font-medium box-border align-middle">
             <div class="flex items-center h-full">Qty</div>
           </th>
-          <th scope="col" class="px-6 py-3 font-medium box-border align-middle">
+          <th scope="col" class="px-8 py-3 font-medium box-border align-middle">
             <div class="flex items-center h-full">Total Harga</div>
           </th>
-          <th scope="col" class="px-6 py-3 font-medium box-border align-middle">
+          <th scope="col" class="px-8 py-3 font-medium box-border align-middle">
             <div class="flex items-center h-full">Pembayaran</div>
           </th>
-          <th scope="col" class="px-6 py-3 rounded-e-base font-medium box-border align-middle">
+          <th scope="col" class="px-8 py-3 rounded-e-base font-medium box-border align-middle">
             <div class="flex items-center h-full">Status</div>
           </th>
         </tr>
       </thead>
 
-      <tbody class="mt-4">
+      <tbody>
         <tr class="border-b border-default bg-gray-300">
-          <td class="px-3 py-3 font-semibold text-heading rounded-s-base box-border align-middle">1</td>
-          <td class="px-3 py-3 box-border align-middle">
+          <td class="px-8 py-3 font-semibold text-heading rounded-s-base box-border align-middle">1</td>
+          <td class="px-8 py-3 box-border align-middle">
             <div class="inline-flex items-center justify-center">
               <img class="w-14 h-14 object-cover rounded" src="static\images\bg-1.png" alt="Tambahkan Gambar">
             </div>
           </td>
 
-          <td class="px-6 py-3 font-semibold text-heading box-border align-middle">Edible</td>
-          <td class="px-6 py-3 font-semibold text-heading box-border align-middle">Dudung</td>
-          <td class="px-6 py-3 font-semibold text-heading box-border align-middle">Nasi Padang</td>
-          <td class="px-6 py-3 font-semibold text-heading box-border align-middle">100</td>
-          <td class="px-6 py-3 font-semibold text-heading box-border align-middle">$599</td>
-          <td class="px-6 py-3 font-semibold text-heading box-border align-middle">$599</td>
-          <td class="px-6 py-3 box-border align-middle rounded-e-base">
-            <a href="#" class="font-medium text-fg-danger hover:underline">Edit</a>
+          <td class="px-8 py-3 font-semibold text-heading box-border align-middle">Edible Edible Edible Edible Edible </td>
+          <td class="px-8 py-3 font-semibold text-heading box-border align-middle">Dudung</td>
+          <td class="px-8 py-3 font-semibold text-heading box-border align-middle">Nasi Padang</td>
+          <td class="px-8 py-3 font-semibold text-heading box-border align-middle">100</td>
+          <td class="px-8 py-3 font-semibold text-heading box-border align-middle">$599</td>
+          <td class="px-8 py-3 font-semibold text-heading box-border align-middle">$599</td>
+          <td class="px-8 py-3 box-border align-middle rounded-e-base">
+            <div class="flex gap-3 items-center flex-wrap">
+              <div class="flex gap-3">
+                <!-- Waiting - checked by default -->
+                <input type="radio" id="status-waiting-1" name="order-status-1" value="waiting" class="peer/waiting hidden" checked>
+                <label for="status-waiting-1" class="cursor-pointer peer-checked/waiting:opacity-100 peer-checked/waiting:bg-accent opacity-50 bg-accent-soft inline-flex items-center text-white hover:bg-accent focus:ring-4 focus:ring-accent font-medium leading-5 rounded-full text-sm px-3 py-1.5 transition-all duration-150">
+                  Waiting
+                </label>
+
+                <!-- Ready -->
+                <input type="radio" id="status-ready-1" name="order-status-1" value="ready" class="peer/ready hidden">
+                <label for="status-ready-1" class="cursor-pointer peer-checked/ready:opacity-100 peer-checked/ready:bg-accent opacity-50 bg-accent-soft inline-flex items-center text-white hover:bg-accent focus:ring-4 focus:ring-accent font-medium leading-5 rounded-full text-sm px-3 py-1.5 transition-all duration-150">
+                  Ready
+                </label>
+              </div>
+
+              <div class="flex gap-3">
+                <!-- Success -->
+                <input type="radio" id="status-success-1" name="order-status-1" value="success" class="peer/success hidden">
+                <label for="status-success-1" class="cursor-pointer peer-checked/success:opacity-100 peer-checked/success:bg-accent opacity-50 bg-accent-soft inline-flex items-center text-white hover:bg-accent focus:ring-4 focus:ring-accent font-medium leading-5 rounded-full text-sm px-3 py-1.5 transition-all duration-150">
+                  Success
+                </label>
+
+                <!-- Declined -->
+                <input type="radio" id="status-declined-1" name="order-status-1" value="declined" class="peer/declined hidden">
+                <label for="status-declined-1" class="cursor-pointer peer-checked/declined:opacity-100 peer-checked/declined:bg-accent opacity-50 bg-accent-soft inline-flex items-center text-white hover:bg-accent focus:ring-4 focus:ring-accent font-medium leading-5 rounded-full text-sm px-3 py-1.5 transition-all duration-150">
+                  Declined
+                </label>
+              </div>
+            </div>
           </td>
         </tr>
-        
       </tbody>
     </table>
   </div>
 </div>
-
-{% endblock %}
-
-{% block content %}
-<div class="container mx-auto px-6 py-6">
-    <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-bold text-[#0D402D]">Pesanan</h1>
-        <div class="flex gap-2">
-            <select class="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 text-sm">
-                <option>jenis</option>
-                <option>edible</option>
-                <option>waste</option>
-            </select>
-            <select class="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 text-sm">
-                <option>status</option>
-                <option>success</option>
-                <option>waiting</option>
-                <option>canceled</option>
-            </select>
-            <button class="px-4 py-2 bg-yellow-400 text-gray-800 rounded-lg font-medium text-sm hover:bg-yellow-500 transition-colors">
-                Show
-            </button>
-            <a href="/tambah" class="px-4 py-2 bg-yellow-400 text-gray-800 rounded-lg font-medium text-sm hover:bg-yellow-500 transition-colors flex items-center gap-2">
-                Add
-            </a>
-        </div>
-    </div>
-
-    <div class="overflow-x-auto">
-       <div class="hidden md:grid grid-cols-9 bg-[#D4D925] text-[#0a3324] font-semibold rounded-t-2xl p-2 gap-4">
-            <div class="pl-8 py-3 text-left">
-                <input type="checkbox" id="selectAll" class="w-4 h-4 cursor-pointer">
-            </div>
-            <div class="py-3 text-left font-semibold">Id</div>
-            <div class="py-3 text-left font-semibold">Gambar</div>
-            <div class="px-4 py-3 text-left font-semibold">Jenis</div>
-            <div class="px-4 py-3 text-left font-semibold">Nama</div>
-            <div class="px-4 py-3 text-left font-semibold">Harga</div>
-            <div class="px-4 py-3 text-left font-semibold">Stock</div>
-            <div class="px-4 py-3 text-left font-semibold">Status</div>
-            <div class="px-4 py-3 text-left font-semibold">Action</div>
-        </div>
-    </div>
-</div>
-
 
 
 {% endblock %}
