@@ -1924,12 +1924,10 @@
       background-color: var(--color-neutral-secondary-medium);
     }
   }
-  .bg-accent {
-    background-color: var(--color-accent);
-  }
-  .bg-accent-soft {
-    background-color: var(--color-accent-soft);
-  }
+  .bg-accent { background-color: var(--color-accent) !important; }
+  .hover\:bg-accent:hover { background-color: var(--color-accent) !important; }
+  .hover\:bg-accent-soft:hover { background-color: var(--color-accent-soft) !important; }
+  .bg-accent-soft { background-color: var(--color-accent-soft) !important; }
   .bg-background {
     background-color: var(--color-background);
   }
@@ -3825,6 +3823,7 @@
 
 /* focus variant for accent */
 .focus\:ring-accent:focus { --tw-ring-color: var(--color-accent); }
+.focus\:ring-accent-medium:focus { --tw-ring-color: var(--color-accent-soft); }
 
 .line-clamp-2 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .line-clamp-3 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
