@@ -359,9 +359,12 @@
     --color-dark-subtle: var(--color-gray-800);
     --color-dark-backdrop: var(--color-gray-950);
     --color-primary: #0D402D;
+    --color-primary-soft: #2F6B52;
     --color-secondary: #A58A55;
     --color-accent: #D4D925;
     --color-accent-soft: #D4D95B;
+    --color-accent-dark: #B8B31A;
+    --color-background: #F2E1D1;
   }
 }
 @layer base {
@@ -956,6 +959,12 @@
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
+  .-mt-1 {
+    margin-top: calc(var(--spacing) * -1);
+  }
+  .-mt-2 {
+    margin-top: calc(var(--spacing) * -2);
+  }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
@@ -1389,6 +1398,8 @@
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
+  .h-14 {
+    height: calc(var(--spacing) * 14);
   .h-12 {
     height: calc(var(--spacing) * 12);
   }
@@ -1508,6 +1519,8 @@
   .w-10 {
     width: calc(var(--spacing) * 10);
   }
+  .w-14 {
+    width: calc(var(--spacing) * 14);
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
@@ -1970,6 +1983,13 @@
       background-color: var(--color-neutral-secondary-medium);
     }
   }
+
+  .bg-accent { background-color: var(--color-accent) !important; }
+  .hover\:bg-accent:hover { background-color: var(--color-accent) !important; }
+  .hover\:bg-accent-soft:hover { background-color: var(--color-accent-soft) !important; }
+  .bg-accent-soft { background-color: var(--color-accent-soft) !important; }
+  .bg-background {
+    background-color: var(--color-background);
   .bg-accent {
     background-color: var(--color-accent);
   }
@@ -2026,6 +2046,16 @@
   }
   .bg-primary {
     background-color: var(--color-primary);
+  }
+  .bg-primary-soft {
+    background-color: var(--color-primary-soft);
+  }
+  .bg-gray-200 {
+    background-color: var(--color-gray-200);
+  }
+
+  .bg-gray-300 {
+    background-color: var(--color-gray-300);
   }
   .bg-primary\/10 {
     background-color: color-mix(in srgb, #0D402D 10%, transparent);
@@ -2589,6 +2619,11 @@
       }
     }
   }
+
+  .hover\:bg-primary-soft {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-primary-soft);
   .hover\:bg-blue-50 {
     &:hover {
       @media (hover: hover) {
@@ -2845,6 +2880,21 @@
       --tw-ring-color: var(--color-primary);
     }
   }
+
+  .ring-primary {
+    --tw-ring-color: var(--color-primary);
+  }
+        
+  .focus\:ring-primary-soft {
+    &:focus {
+      --tw-ring-color: var(--color-primary-soft);
+    }
+  }
+        
+  .ring-primary-soft {
+    --tw-ring-color: var(--color-primary-soft);
+  }
+        
   .focus\:outline-none {
     &:focus {
       --tw-outline-style: none;
@@ -3940,3 +3990,32 @@
     }
   }
 }
+
+.bg-gray-400 { background-color: var(--color-gray-400) !important; }
+.bg-gray-200 { background-color: var(--color-gray-200) !important; }
+
+/* custom accent-dark background utilities */
+.bg-accent-dark { background-color: var(--color-accent-dark) !important; }
+.hover\:bg-accent-dark:hover { background-color: var(--color-accent-dark) !important; }
+
+.ring-2 { box-shadow: 0 0 0 2px var(--tw-ring-color, transparent); }
+.ring-gray-200 { --tw-ring-color: var(--color-gray-200); }
+.ring-gray-300 { --tw-ring-color: var(--color-gray-300); }
+.hover\:ring-gray-300:hover { --tw-ring-color: var(--color-gray-300); }
+
+/* custom accent ring utilities */
+.ring-accent { --tw-ring-color: var(--color-accent); }
+.hover\:ring-accent:hover { --tw-ring-color: var(--color-accent); }
+
+.focus\:ring-2:focus { box-shadow: 0 0 0 2px var(--tw-ring-color, transparent); }
+.focus\:ring-gray-200:focus { --tw-ring-color: var(--color-gray-200); }
+.focus\:ring-gray-300:focus { --tw-ring-color: var(--color-gray-300); }
+
+/* focus variant for accent */
+.focus\:ring-accent:focus { --tw-ring-color: var(--color-accent); }
+.focus\:ring-accent-medium:focus { --tw-ring-color: var(--color-accent-soft); }
+
+.line-clamp-2 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+
+
